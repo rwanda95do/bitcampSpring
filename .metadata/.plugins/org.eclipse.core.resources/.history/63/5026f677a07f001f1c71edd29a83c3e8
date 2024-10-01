@@ -1,0 +1,49 @@
+package sample01;
+
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+@RequiredArgsConstructor
+public class MessageBeanImpl implements MessageBean {
+	@NonNull
+	private String fruit;
+	@Setter
+	private int cost;
+	@Setter
+	private int qty;
+
+/*	
+// 생성자
+	public MessageBeanImpl(String fruit) {
+		this.fruit = fruit;
+	}
+// Setter
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+*/
+
+
+	@Override
+	public void sayHello() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void sayHello(String fruit, int cost) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void sayHello(String fruit, int cost, int qty) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

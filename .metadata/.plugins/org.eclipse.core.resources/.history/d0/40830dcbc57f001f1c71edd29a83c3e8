@@ -1,0 +1,30 @@
+package sample04;
+
+import java.util.Scanner;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class SungJukInput implements SungJuk {
+	Scanner scan = new Scanner(System.in);
+	
+	
+	@Override
+	public void execute() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		SungJuk sungJukDTO2 = context.getBean("sungJukDTO2", SungJuk.class);
+		
+		System.out.println("이름입력 : ");
+		sunjukDto.setName(scan.next());
+		System.out.println("국어 점수 입력 : ");
+		scan.nextInt();
+		System.out.println("영어 점수 입력 : ");
+		scan.nextInt();
+		System.out.println("수학 점수 입력 : ");
+		scan.nextInt();
+		
+		System.out.println();
+		System.out.println("님의 데이터를 입력 하였습니다.");
+	}
+
+}

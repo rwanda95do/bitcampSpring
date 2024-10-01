@@ -1,0 +1,14 @@
+package sample04;
+
+import java.util.Scanner;
+
+public class HelloSpring {
+
+
+	public static void main(String[] args) {
+
+		while(true) {
+			menu();
+		}
+	}
+}

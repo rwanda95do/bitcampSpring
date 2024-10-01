@@ -1,0 +1,27 @@
+package sample03;
+
+public class SungJukImpl implements Sungjuk {
+	public String name;
+	public int kor;
+	public int eng;
+	public int math;
+	public int tot;
+	public double avg;
+	
+	
+	@Override
+	public void calc() {
+		tot = kor+eng+math;
+		avg = tot/3;
+
+	}
+
+	@Override
+	public void display() {
+		System.out.println("이름 \t국어 \t영어 \t수학 \t총점 \t평균");
+		System.out.println(name + " \t" + kor +" \t"+ eng + 
+				" \t"+ math +" \t"+ tot +" \t" + avg);
+
+	}
+
+}
