@@ -11,5 +11,5 @@
 	
 	<context:component-scan base-package="sample02" />
 	<context:component-scan base-package="sample03" />
-	
+	<context:component-scan base-package="sample04" />
 </beans>

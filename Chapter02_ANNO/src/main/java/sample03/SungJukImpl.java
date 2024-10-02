@@ -7,13 +7,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
-@Component
+//@Component
 public class SungJukImpl implements SungJuk {
 // SungJukDTO의 기본 생성자가 만들어 졌기 때문에 기본값만 처리되고 있는 중.. 
 // Setter값이되려면? 
 // 생성된 빈들 중에서, @Component("sungJukDTO")를 찾아서 자동으로 매핑해라!!
-	// 생성자이건 setter이건 상관없이 sungJukDTO를 찾아서 자동으로 매핑해라
-	@Autowired
+	@Autowired  // @Autowired는 생성자이건 setter이건 상관없이 sungJukDTO를 찾아서 자동으로 매핑해라
 	private SungJukDTO sungJukDTO = null;
 
 	

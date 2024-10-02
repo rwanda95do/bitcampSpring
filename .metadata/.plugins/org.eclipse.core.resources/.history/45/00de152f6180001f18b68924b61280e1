@@ -1,0 +1,16 @@
+package sample04;
+
+import java.util.Scanner;
+
+public class SungJukInput implements SungJuk {
+
+	@Override
+	public void excute() {
+		System.out.println();
+		
+		Scanner scan = new Scanner(System.in);
+		
+
+	}
+
+}

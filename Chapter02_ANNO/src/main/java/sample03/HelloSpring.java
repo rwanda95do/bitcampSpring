@@ -1,5 +1,6 @@
 package sample03;
 
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,6 +13,15 @@ public class HelloSpring {
 		sungJuk.calcTot();
 		sungJuk.calcAvg();
 		sungJuk.display();
+		
+	
+		System.out.println();
+		
+		sungJuk.modify();
+		sungJuk.calcTot();
+		sungJuk.calcAvg();
+		sungJuk.display();
+	
 	}
 
 }

@@ -1,0 +1,53 @@
+package sample04;
+
+import java.util.Scanner;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class HelloSpring {
+
+	public static void main(String[] args) {
+		// main을 가지고 있는 HelloSpring은 한번만 호출되기 때문에 아래처럼 만들어도된다. 
+		// HelloSpring helloSpring = new HelloSpring();
+		
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		HelloSpring helloSpring = context.getBean("helloSpring", HelloSpring.class);
+		helloSpring.menu(context);
+		System.out.println("프로그램을 종료합니다.");
+		
+	}
+
+	public void menu(ApplicationContext context) {
+		Scanner scan = new Scanner(System.in);
+		SungJuk sungJuk = null;
+		
+		while(true) {
+			System.out.println("******************");
+			System.out.println("1.입력");
+			System.out.println("2.출력");
+			System.out.println("3.수정");
+			System.out.println("4.삭제");
+			System.out.println("5.끝");
+			System.out.println("******************");
+			System.out.print("번호 : ");
+			int num = scan.nextInt();
+			
+			if(num == 5) {
+				break;
+			} else if(num == 1) {
+				//SungJuk sungJuk = new SungJukInput();
+				ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+				sungJuk = context.getBean("SungJukInput", SungJuk.class);
+			} else if (num == 2) {
+				//SungJuk sungJuk = new SungJukOutput();
+			} else if (num == 3) {
+				
+			} else if (num == 4) {
+				
+			}
+		}
+	}
+
+}

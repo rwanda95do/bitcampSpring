@@ -2,8 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 <!-- sample01 -->
 	<bean id="messageBeanImpl" class="sample01.MessageBeanImpl">
 		<!-- 생성자 -->
@@ -50,4 +52,40 @@
 		<constructor-arg ref="sungJukDTO" />
 	</bean>
 
+<!-- sample04 -->
+	<bean id="helloSpring" class="sample04.HelloSpring"></bean>
+	<bean id="sungJukInput" class="sample04.SungJukInput" scope="prototype">
+		<property name="sungJukDTO2" ref="sungJukDTO2"></property>
+		<property name="list" ref="arrayList"></property>
+	</bean>
+	<bean id="sungJukOutput" class="sample04.SungJukOutput">
+		<property name="list" ref="arrayList"></property>
+	</bean>
+	<bean id="sungJukUpdate" class="sample04.SungJukUpdate">
+		<property name="list" ref="arrayList"></property>
+	</bean>
+	<bean id="sungJukDelete" class="sample04.SungJukDelete">
+		<property name="list" ref="arrayList"></property>
+	</bean>
+	<!-- 싱글톤 : 메모리에 딱 한번만 만들어냄
+	<bean id="sungJukDTO2" class="sample04.SungJukDTO2"></bean>
+	 -->
+	 <bean id="sungJukDTO2" class="sample04.SungJukDTO2" scope="prototype"></bean>
+	<!-- 리스트를 싱글톤으로 만든다 
+	<bean id="arrayList" class="java.util.ArrayList"></bean>
+	-->
+	<!-- 스프링일 제공하는 util사용해보기  -->
+	<util:list id="arrayList" list-class="java.util.ArrayList"></util:list>
+	
+	
+<!-- sample 05 -->
+	<bean id="messageBeanImpl05" class="sample05.MessageBeanImpl">
+		<constructor-arg value="홍길동"></constructor-arg>
+		<property name="phone" value=":000-0000-0000" />
+		<property name="outputter" ref="fileOutputter" />
+	</bean>
+	<bean id="fileOutputter" class="sample05.FileOutputter">
+		<property name="filePath" value="D:/Spring/"/> <!-- D:\\Spring -->
+		<property name="fileName" value="result.txt" />
+	</bean>
 </beans>
