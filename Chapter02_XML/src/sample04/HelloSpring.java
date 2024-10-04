@@ -43,16 +43,17 @@ public class HelloSpring {
 				break;
 			} else if(num == 1) {
 				//SungJuk sungJuk = new SungJukInput();
-				sungJuk = context.getBean("sungJukInput", SungJuk.class);
+				InsertService  insertService = new insertService()
+				insertService.execute();
 			} else if (num == 2) {
-				//SungJuk sungJuk = new SungJukOutput();
-				sungJuk = context.getBean("sungJukOutput", SungJuk.class);
+				UpdateService  updateService = new UpdateService()
+				insertService.execute();
 			} else if (num == 3) {
 				sungJuk = context.getBean("sungJukUpdate", SungJuk.class);
 			} else if (num == 4) {
 				sungJuk = context.getBean("sungJukDelete", SungJuk.class);
 			}
-			sungJuk.excute();
+			
 		}
 	}
 

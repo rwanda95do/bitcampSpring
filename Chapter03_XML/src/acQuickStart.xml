@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<bean class="sample01.MessageBeanImpl" id="messageBeanImpl">
+		<property name="str" value="Have a nice day!!"></property>
+	</bean>
+	<bean class="sample01.LoggingAdvice" id="loggingAdvice"></bean>
+	
+<!-- AOP -->
+	<!-- Before -->
+	<aop:config>
+		<aop:pointcut expression="execution(public void sample01.MessageBeanImpl.*Before())"
+					  id="beforeMethod"/> 
+		<aop:pointcut expression="execution(public * *.*.*After(..))"
+					  id="afterMethod"/>
+		<aop:pointcut expression="execution(public * *.MessageBeanImpl.*Print(..))"
+					  id="aroundMethod"/>
+<!-- 
+<aop:pointcut expression="execution(public * * *.*After(..))"
+public인 모든 자료형, 모든 패키지, 모든 클래스의 끝이 After로 끝나는 매개변수가 자유로운 매서드
+ -->
+		<!-- 공통코드 -->
+		<aop:aspect ref="loggingAdvice">
+			<aop:before method="beforeTrace" pointcut-ref="beforeMethod"/>
+			<aop:after method="afterTrace" pointcut-ref="afterMethod"/>
+			<aop:around method="trace" pointcut-ref="aroundMethod"/>
+		</aop:aspect>
+	</aop:config>
+</beans> 
