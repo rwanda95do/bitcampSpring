@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+<!-- Connectoin Pool & Data Source -->
+<!-- 방법1  
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/mydb?serverTimezone=Asia/Seoul" />
+		<property name="username" value="root" />
+		<property name="password" value="1234" />
+	</bean>	
+-->
+<!-- 방법2. 	xmlns:p="http://www.springframework.org/schema/p" 의 namespace 이용하기 
+	<bean id="dataSource" 
+		  class="org.apache.commons.dbcp2.BasicDataSource"
+		  p:driverClassName="com.mysql.cj.jdbc.Driver"
+		  p:url="jdbc:mysql://localhost:3306/mydb?serverTimezone=Asia/Seoul"
+		  p:username="root"
+		  p:password="1234">
+	</bean>
+ -->
+ <!-- 방법3(가장 선호). xml이 올라가도 properties파일은 올리지 않아서 데이터 내용 숨기기  -->
+	<context:property-placeholder location="classpath:spring/db.properties" /> 
+ 
+ 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>	
+
+
+<!-- bean -->
+	<bean class="user.main.HelloSpring" id="helloSpring"></bean>
+
+	<bean class="user.bean.UserDTO" id="userDTO"></bean>
+
+	<bean class="user.dao.impl.UserDAOImpl" id="userDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!--insert  -->	
+	<bean class="user.service.UserInsertService" id="userInsertService">
+		<property name="userDTO" ref="userDTO"></property>
+		<property name="userDAO" ref="userDAOImpl"></property>
+	</bean>
+	
+	<!-- select -->
+	<bean class="user.service.UserSelectService" id="userSelectService">
+		<property name="userDAO" ref="userDAOImpl"></property>
+	</bean>
+	
+	<!-- update -->
+	<bean class="user.service.UserUpdateService" id="userUpdateService">
+		<property name="userDAO" ref="userDAOImpl"></property>
+		<property name="userDTO" ref="userDTO"></property>
+	</bean>	
+	
+	<bean id="userDeleteService" class="user.service.UserDeleteService">
+		<property name="userDAO" ref="userDAOImpl"></property>
+	</bean>
+	
+</beans>

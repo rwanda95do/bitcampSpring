@@ -4,21 +4,24 @@ import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import lombok.Setter;
 import user.bean.UserDTO;
 import user.dao.UserDAO;
+
 
 public class UserDAOImpl implements UserDAO {
 
 // 템플릿 클래스
 	@Setter
 	private JdbcTemplate jdbcTemplate = null;
-/*	
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-*/
+	
+	/*
+	 * public void setJdbcTemplate(JdbcTemplate jdbcTemplate) { this.jdbcTemplate =
+	 * jdbcTemplate; }
+	 */
+
 	//UserInsertService
 	@Override
 	public void write(UserDTO userDTO) {
@@ -50,3 +53,4 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 }
+

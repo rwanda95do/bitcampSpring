@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="Chapter06"/>
 			<item value="Chapter04_XML"/>
 			<item value="Chapter03_XML"/>
 			<item value="Chapter02_XML"/>
@@ -10,6 +11,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Chapter06"/>
 			<item value="Chapter04_XML"/>
 			<item value="Chapter03_XML"/>
 			<item value="Chapter02_XML"/>
@@ -79,12 +81,14 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="Chapter05_ANNO"/>
 			<item value="Chapter04_ANNO"/>
 			<item value="Chapter03_ANNO"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Chapter05_ANNO"/>
 			<item value="Chapter04_ANNO"/>
 			<item value="Chapter03_ANNO"/>
 		</list>
