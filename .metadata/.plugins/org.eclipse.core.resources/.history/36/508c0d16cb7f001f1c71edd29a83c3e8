@@ -1,8 +1,0 @@
-package sample03;
-
-public class SungJukDTO {
-	private String name;
-	private int kor, ent, math, tot;
-	private double avg;
-	
-}

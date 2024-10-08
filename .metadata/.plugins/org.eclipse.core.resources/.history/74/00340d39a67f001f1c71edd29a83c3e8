@@ -1,9 +1,0 @@
-package spring.conf;
-
-import org.springframework.context.annotation.Configuration;
-
-// 스프링 설정 파일과 같은 역할을 할 JAVA 파일
-@Configuration
-public class SpringConfiguration {
-
-}

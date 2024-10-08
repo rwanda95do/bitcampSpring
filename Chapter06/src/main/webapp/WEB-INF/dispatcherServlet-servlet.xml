@@ -5,13 +5,4 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/"></property> <!-- jsp파일 위치 -->
-		<property name="suffix" value=".jsp"></property> <!-- 확장자 -->
-	</bean>
-	
-	
-	<bean id="helloController" class="com.controller.HelloController"></bean>
-
 </beans>
