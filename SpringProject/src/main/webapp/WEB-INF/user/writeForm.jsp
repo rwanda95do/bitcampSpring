@@ -12,11 +12,12 @@
 	<div id="wrap">
 		<a href="/spring"><img alt="gif였네" src="../image/img1.gif" width="50" height="50"></a>	
 	    <div id="Formwrap">
-	        <form action="user/write" method="post">
+	        <form id="userWriteForm" method="post">
 	            <div id="inputwrap">
 	                <div id="namewrap">
 	                    <div>이름 : </div>
 	                    <input type="text" id="name" name="name"/>
+	                    <div id="nameDiv"></div>
 	                </div>
 	                <div id="idwrap">
 	                    <div>아이디 : </div>
@@ -26,9 +27,10 @@
 	                <div id="pwdwrap">
 	                    <div>비밀번호 : </div>
 	                    <input type="text" id="pwd" name="pwd"/>
+	                    <div id="pwdDiv"></div>
 	                </div>
 	                <div id="btnwrap">
-	                    <input type="submit" value="보내기"/>
+	                    <input id="writeBtn" type="button" value="회원가입"/>
 	                </div>
 	                <div id="resetwrap">
 	                    <input type="reset" value="취소"/>

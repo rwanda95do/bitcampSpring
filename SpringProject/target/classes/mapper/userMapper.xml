@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  UserMybatisDAOImple사용 : <mapper namespace="userSQL"> -->
+ <mapper namespace="user.dao.UserDAO">
+ <!-- UserInsertService -->
+ 	<insert id="write" parameterType="user">
+ 		insert into usertable values(#{name}, #{id}, #{pwd})
+ 	</insert>
+ 
+ <!-- 유저 목록 -->
+ 	<select id="list" parameterType="java.util.Map" resultType="user">
+ 		select * from usertable limit #{startNum}, #{endNum}
+ 	</select>
+ <!-- 페이징처리: 총 글수 -->
+ 	<select id="getTotalA" resultType="int">
+ 		select count(*) from usertable
+ 	</select>
+ 
+ <!-- 중복 아이디 체크 -->
+ 	<select id="getExistId" parameterType="String" resultType="user">
+ 		select * from usertable where id=#{id}
+ 	</select>
+ <!-- 수정 -->
+ 	<update id="update" parameterType="user">
+ 		update usertable set name=#{name}, pwd=#{pwd} where id=#{id}
+ 	</update>
+
+ 	
+ <!-- UserDeleteService -->
+ 	<delete id="delete" parameterType="String">
+ 		delete from usertable where id=#{id}
+ 	</delete>
+ </mapper>

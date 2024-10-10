@@ -19,6 +19,8 @@
 	<context:component-scan base-package="com.controller.SpringProject" />
 	<context:component-scan base-package="user.controller" />
 	
+	
+<!-- Dispatcher가 받지 못하게 -->	
 	<resources location="/WEB-INF/css/" mapping="/css/**"></resources>  <!-- /css/**  :: /css로 시작하는 (뒤에 얼마나 타고오든 상관 없다) -->
 	<resources location="/WEB-INF/js/" mapping="/js/**"></resources>
 	<resources location="/WEB-INF/image/" mapping="/image/**"></resources>

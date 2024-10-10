@@ -19,7 +19,7 @@ div label {
     margin-bottom: 5px;
 }
 
-input[type="text"], input[type="password"], input[type="submit"], input[type="reset"] {
+input[type="text"], input[type="password"], input[type="submit"], input[type="reset"], input[type="button"] {
     width: calc(100% - 20px); /* 패딩을 고려한 너비 조절 */
     padding: 8px 10px;
     border: 1px solid #ccc;

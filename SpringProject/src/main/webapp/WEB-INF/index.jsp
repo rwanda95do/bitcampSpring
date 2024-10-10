@@ -10,7 +10,7 @@
 <h2>메인화면</h2>
 <h3>
 	<p><a href="/spring/user/writeForm">입력</a></p> <!--/spring"/"user/writeForm 중에 ""안에 /만 보면 Servlet이동함  -->
-	<p><a href="/spring/user/list?pg=1">출력</a></p>
+	<p><a href="/spring/user/list">출력</a></p> <!-- pg=1일때는 생략 가능 /spring/user/list?pg=1 -->
 
 </h3>
 </body>
