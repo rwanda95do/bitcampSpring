@@ -27,7 +27,20 @@ $(function(){
 	});
 	
 // 삭제
-
+	$('#deleteBtn').click(function(){
+		if($('#chPwd').val() == $('#pwd').val()){
+			$.ajax({
+				type: 'post',
+				url: '/spring/user/delete',
+				data: 'id=' + $('#id').val() ,
+				success: function(){
+					alert('삭제');
+					location.href='/spring/user/list'
+				},
+				error: function(e){console.log(e);}
+			});
+		}
+	});
 
 
 

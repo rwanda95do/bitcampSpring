@@ -16,4 +16,6 @@ public interface UserService {
 	public UserDTO getUser(String id);
 
 	public void update(UserDTO userDTO);
+
+	public void delete(String id);
 }

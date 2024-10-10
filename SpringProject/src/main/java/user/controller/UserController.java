@@ -71,4 +71,12 @@ public class UserController {
 	public void update(@ModelAttribute UserDTO userDTO) {
 		userService.update(userDTO);
 	}
+	
+	
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	@ResponseBody
+	public void delete(String id) {
+		userService.delete(id);
+	}
+	
 }

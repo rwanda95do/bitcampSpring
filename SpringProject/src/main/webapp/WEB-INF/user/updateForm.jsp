@@ -13,6 +13,7 @@
 	    <div id="Formwrap">
 	        <form id="userUpdateForm" method="post">
 	        	<input type="hidden" id="pg" value="${pg}">
+	        	<input type="hidden" id="chPwd" value="${userDTO.pwd}">
 	            <div id="inputwrap">
 	                <div id="namewrap">
 	                    <div>이름 : </div>
