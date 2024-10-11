@@ -24,5 +24,7 @@ public interface UserDAO {
 
 	public int getTotalA();
 
+	public UserDTO getExistPwd(String id);
+
 
 }

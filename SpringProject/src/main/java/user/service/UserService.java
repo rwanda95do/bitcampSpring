@@ -18,4 +18,6 @@ public interface UserService {
 	public void update(UserDTO userDTO);
 
 	public void delete(String id);
+
+	public UserDTO getExistPwd(String id);
 }

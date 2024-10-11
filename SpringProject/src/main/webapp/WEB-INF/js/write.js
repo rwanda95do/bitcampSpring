@@ -46,6 +46,7 @@ $(function(){
 				data : $('#userWriteForm').serialize(),
 				success : function(){
 					alert('회원가입 완료!');
+					// location.href='/';
 				},
 				error : function(e){console.log(e)}
 				

@@ -83,5 +83,11 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public UserDTO getExistPwd(String id) {
+		UserDTO userDTO = userDAO.getExistPwd(id);
+		return userDTO;
+	}
+
 
 }

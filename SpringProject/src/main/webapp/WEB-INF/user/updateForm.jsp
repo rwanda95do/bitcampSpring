@@ -32,7 +32,7 @@
 	                </div>
 	                <div id="btnwrap">
 	                    <input id="updateBtn" type="button" value="수정"/>
-	                    <input id="deleteBtn" type="button" value="삭제"/>
+	                    <input id="deleteBtn" type="button" value="삭제" onclick="location.href='/spring/user/deleteForm?id=${userDTO.id}&pg=${pg }'"/>
 	                    <input type="button" value="목록" onclick="location.href='/spring/user/list?pg=${pg}'"/>
 	                </div>
 	                <div id="resetwrap">
@@ -45,5 +45,6 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="../js/update.js"></script>
+<script type="text/javascript" src="../js/delete.js"></script>
 </body>
 </html>

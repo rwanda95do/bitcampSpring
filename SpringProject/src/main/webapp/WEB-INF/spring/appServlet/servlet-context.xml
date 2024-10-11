@@ -9,12 +9,17 @@
 
 	
 	<annotation-driven />  <!-- 내가 설정해준거 말고 기본적으로 필요한 설정파일은 스프링이 알아서 한다 -->
-
+	
+	<!-- View Resolver -->
 	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF" ></beans:property>
 		<beans:property name="suffix" value=".jsp"></beans:property>
 	</beans:bean>
 
+	<!-- FileUpload Resolver  -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="5000000" /> <!-- MB : 000000 -->
+	</beans:bean>
 
 	<context:component-scan base-package="com.controller.SpringProject" />
 	<context:component-scan base-package="user.controller" />
@@ -24,5 +29,5 @@
 	<resources location="/WEB-INF/css/" mapping="/css/**"></resources>  <!-- /css/**  :: /css로 시작하는 (뒤에 얼마나 타고오든 상관 없다) -->
 	<resources location="/WEB-INF/js/" mapping="/js/**"></resources>
 	<resources location="/WEB-INF/image/" mapping="/image/**"></resources>
-	
+	<resources location="/WEB-INF/storage/" mapping="/storage/**"></resources>
 </beans:beans>

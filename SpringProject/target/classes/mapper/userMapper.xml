@@ -29,6 +29,10 @@
 
  	
  <!-- UserDeleteService -->
+ 	<select id="getExistPwd" parameterType="String" resultType="user">
+ 		select * from usertable where id=#{id}
+ 	</select>
+ 
  	<delete id="delete" parameterType="String">
  		delete from usertable where id=#{id}
  	</delete>

@@ -36,6 +36,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "write", method = RequestMethod.POST)
+	@ResponseBody
 	public void write(@ModelAttribute UserDTO userDTO) {
 		userService.write(userDTO);
 	}
@@ -73,9 +74,27 @@ public class UserController {
 	}
 	
 	
+	@RequestMapping(value = "deleteForm", method = RequestMethod.GET)
+	public ModelAndView deleteForm(@RequestParam String id, @RequestParam String pg) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("id", id);		// session이 있으면 session을 얻어오면 되기 때문에 필요가 없어진다.
+		mav.addObject("pg", pg);
+		mav.setViewName("/user/deleteForm");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "getExistPwd", method = RequestMethod.POST)
+	@ResponseBody
+	public UserDTO getExistPwd(@RequestParam String id, Model model) {
+		// 받는 쪽이 json이기 때문에 json으로 만들어 줘야한다.:JSONObject
+		// 스프링은 객체를 자동으로 json으로 변경해 준다. >> pom.xml에json사용한다고 알려줘야함
+		return userService.getExistPwd(id);
+	}
+	
 	@RequestMapping(value = "delete", method = RequestMethod.POST)
 	@ResponseBody
-	public void delete(String id) {
+	public void delete(@RequestParam String id) {
 		userService.delete(id);
 	}
 	

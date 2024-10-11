@@ -14,10 +14,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import user.bean.UserDTO;
-import user.service.UserDeleteService;
-import user.service.UserInsertService;
-import user.service.UserSelectService;
-import user.service.UserUpdateService;
+
 
 @Configuration
 @EnableTransactionManagement
