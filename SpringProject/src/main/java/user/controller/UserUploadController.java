@@ -6,28 +6,38 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import user.bean.UserDTO;
 import user.bean.UserUploadDTO;
+import user.service.ObjectStorateService;
+import user.service.UserService;
 import user.service.UserUploadService;
 
 @Controller
 @RequestMapping(value = "user")
 public class UserUploadController {
 	@Autowired
-	UserUploadService userUploadService;
-
+	private UserUploadService userUploadService;
+	@Autowired
+	private ObjectStorateService objectStorateService;
+	private String bucketName = "bitcamp-9th-bucket-115";
+	
 	@RequestMapping(value = "uploadForm")
 	public String uploadForm() {
 		return "/upload/uploadForm";
@@ -154,6 +164,7 @@ public class UserUploadController {
 		String filePath = session.getServletContext().getRealPath("WEB-INF/storage");
 		System.out.println("실제폴더 : " + filePath);
 		
+		String imageFileName;
 		String imageOriginalFileName; 
 		File file;
 		String result = "";
@@ -162,6 +173,15 @@ public class UserUploadController {
 		List<UserUploadDTO> imageUploadList = new ArrayList<UserUploadDTO>();
 		
 		for(MultipartFile img : list) {
+			//imageFileName = UUID.randomUUID().toString();  //imageFileName를 UUID로 얻어오기
+			
+			
+		// 1. 네이버 클라우드 object storage--------------------
+			imageFileName = objectStorateService.uploadFile(bucketName,"storage/", img);
+		// ---------------------------------------------	
+			
+			
+			
 			imageOriginalFileName = img.getOriginalFilename(); 
 			file = new File(filePath, imageOriginalFileName);
 			
@@ -192,7 +212,7 @@ public class UserUploadController {
 			UserUploadDTO dto = new UserUploadDTO();
 			dto.setImageName(userUploadDTO.getImageName());
 			dto.setImageContent(userUploadDTO.getImageContent());
-			dto.setImageFileName(""); //UUID ="" 
+			dto.setImageFileName(imageFileName); 
 			dto.setImageOriginalFileName(imageOriginalFileName);
 			
 			imageUploadList.add(dto);
@@ -202,11 +222,42 @@ public class UserUploadController {
 		// DB
 		userUploadService.upload(imageUploadList); 
 		
-		
-		
-		
 		return result;
 	}
 
 
+	@RequestMapping(value = "uploadList")
+	public ModelAndView uploadList(){
+		List<UserUploadDTO> list = userUploadService.uploadList();
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("/upload/uploadList");
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = "uploadView")
+	public String uploadView(@RequestParam String seq, Model model) {
+		UserUploadDTO userUploadDTO = userUploadService.getUploadDTO(seq);
+		model.addAttribute("userUploadDTO", userUploadDTO);
+		return "/upload/uploadView";
+	}
+	
+	@RequestMapping(value = "uploadUpdateForm")
+	public String uploadUpdateForm(@RequestParam String seq, Model model) {
+		
+		UserUploadDTO userUploadDTO = userUploadService.getUploadDTO(seq);
+		model.addAttribute("userUploadDTO", userUploadDTO);
+	
+		return "/upload/uploadUpdateForm";
+	}
+	
+	@RequestMapping(value = "uploadUpdate")
+	@ResponseBody
+	public String uploadUpdate(@ModelAttribute UserUploadDTO userUploadDTO, 
+								@RequestParam("img") MultipartFile img) {
+		userUploadService.uploadUpdate(userUploadDTO, img);
+		return "이미지 수정 완료";
+	}	
 }

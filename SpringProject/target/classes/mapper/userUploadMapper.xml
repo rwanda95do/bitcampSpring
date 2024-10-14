@@ -5,7 +5,33 @@
  <mapper namespace="user.dao.UserUploadDAO">
  
  <!-- 이미지 등록 -->
- 	<insert id="upload" parameterType="">
- 		
+ 	<!-- SQL문을 실행할 때, 넘어오는 parameterType이 List일 경우 
+ 		 forEach태그의 collection속성을 사용할 수 있는 이름은 list, 또는 collection이 가능하다.
+ 		 즉, <foreach collection="list"></foreach>  -->
+ 	<insert id="upload">
+ 		insert into userUpload(imageName, imageContent, imageFileName, imageOriginalFileName) values
+ 		<foreach collection="list" item="dto" separator=",">
+ 		(#{dto.imageName}, #{dto.imageContent}, #{dto.imageFileName}, #{dto.imageOriginalFileName})
+ 		</foreach>
  	</insert>
+ 	
+ <!-- 이미지 목록 -->
+ 	<select id="uploadList" resultType="userUploadDTO">
+ 		select * from userUpload order by seq desc
+ 	</select>
+ 	
+ <!-- 글 한개 가져오기 -->
+ 	<select id="getUploadDTO" parameterType="String" resultType="userUploadDTO">
+	 	select * from userUpload where seq=#{seq}
+ 	</select>
+ <!-- 이미지 파일 이름 얻기 -->
+ 	<select id="getImageFileName" parameterType="int" resultType="String">
+ 		select imageFileName from userUpload where seq=#{seq};
+ 	</select>
+<!-- 이미지 ㅍㅏ일 수정 -->	
+	<update id="uploadUpdate" parameterType="UserUploadDTO"> 
+		update userUpload 
+		set imageName=#{imageName}, imageContent=#{imageContent}, imageFileName=#{imageFileName}, imageOriginalFileName=#{imageOriginalFileName} 
+		where seq=#{seq} 
+	</update>
  </mapper>

@@ -5,7 +5,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -21,6 +23,9 @@ import user.bean.UserDTO;
 @PropertySource("classpath:spring/db.properties") 		// property 파일 알려줌
 @MapperScan("user.dao")     // UserDAO만 사용하는 방법2  
 public class SpringConfiguration {
+// *Mapper 2개 이상 [와일드카드]
+	@Autowired
+	private ApplicationContext context;
 
 // Connection Pool
 	private @Value("${jdbc.driver}") String driver;
@@ -28,6 +33,8 @@ public class SpringConfiguration {
 	private @Value("${jdbc.username}") String username;
 	private @Value("${jdbc.password}") String password;
 
+	
+	
 	@Bean
 	public BasicDataSource datasource() {
 		BasicDataSource basicDataSource =  new BasicDataSource();
@@ -48,9 +55,18 @@ public class SpringConfiguration {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		
 		sqlSessionFactoryBean.setDataSource(datasource());
-		sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("spring/mybatis-config.xml"));
-		sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("mapper/userMapper.xml"));
-		
+		//sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("spring/mybatis-config.xml"));  // 지웠으니까 같이 삭제해줘야한다.
+	// Mapper
+		// 1개
+		//sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("mapper/userMapper.xml"));
+		// 2개 이상 [배열]
+		//sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("mapper/userMapper.xml")
+		//										,new ClassPathResource("mapper/userMapper.xml"));
+		// * 2개 이상 [와일드카드]
+		sqlSessionFactoryBean.setMapperLocations(context.getResources("classpath:mapper/*Mapper.xml"));
+	// Ailias
+		//sqlSessionFactoryBean.setTypeAliasesPackage("user.bean"); // 클래스명을 알리아스명으로 잡아버림
+		sqlSessionFactoryBean.setTypeAliasesPackage("*.bean"); // 패키지를 따로 잡았을 경우
 		//.getObject() 를 사용해서 sqlSessionFactory를 return 한다.
 		return sqlSessionFactoryBean.getObject();
 	}

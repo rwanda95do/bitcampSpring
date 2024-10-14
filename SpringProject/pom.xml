@@ -112,7 +112,15 @@
 		    <artifactId>commons-fileupload</artifactId>
 		    <version>1.5</version>
 		</dependency>
-				
+	
+	<!-- 클라우드 연결 (NAVER) -->
+		<!-- aws java sdk s3 : 의존관계에 의해 하나만 넣어도 전에 했던(projectMVC) 7개가 다 들어옴 -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk-s3</artifactId>
+		    <version>1.12.610</version>
+		</dependency>
+		
 	<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>

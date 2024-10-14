@@ -5,12 +5,12 @@
 <!--  UserMybatisDAOImple사용 : <mapper namespace="userSQL"> -->
  <mapper namespace="user.dao.UserDAO">
  <!-- UserInsertService -->
- 	<insert id="write" parameterType="user">
+ 	<insert id="write" parameterType="userDTO">
  		insert into usertable values(#{name}, #{id}, #{pwd})
  	</insert>
  
  <!-- 유저 목록 -->
- 	<select id="list" parameterType="java.util.Map" resultType="user">
+ 	<select id="list" parameterType="java.util.Map" resultType="userDTO">
  		select * from usertable limit #{startNum}, #{endNum}
  	</select>
  <!-- 페이징처리: 총 글수 -->
@@ -19,17 +19,17 @@
  	</select>
  
  <!-- 중복 아이디 체크 -->
- 	<select id="getExistId" parameterType="String" resultType="user">
+ 	<select id="getExistId" parameterType="String" resultType="userDTO">
  		select * from usertable where id=#{id}
  	</select>
  <!-- 수정 -->
- 	<update id="update" parameterType="user">
+ 	<update id="update" parameterType="userDTO">
  		update usertable set name=#{name}, pwd=#{pwd} where id=#{id}
  	</update>
 
  	
  <!-- UserDeleteService -->
- 	<select id="getExistPwd" parameterType="String" resultType="user">
+ 	<select id="getExistPwd" parameterType="String" resultType="userDTO">
  		select * from usertable where id=#{id}
  	</select>
  

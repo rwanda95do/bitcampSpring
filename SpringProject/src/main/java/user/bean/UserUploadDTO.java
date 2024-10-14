@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 //@Component
 public class UserUploadDTO {
+	private int seq;
 	private String imageName;		// 상품명
 	private String imageContent;	// 상품내용
 	private String imageFileName;   // UUID에서 얻은 이름
