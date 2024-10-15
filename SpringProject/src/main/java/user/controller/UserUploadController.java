@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -253,11 +254,18 @@ public class UserUploadController {
 		return "/upload/uploadUpdateForm";
 	}
 	
-	@RequestMapping(value = "uploadUpdate")
+	@RequestMapping(value = "uploadUpdate", produces = "text/html; charset=UTF-8")
 	@ResponseBody
 	public String uploadUpdate(@ModelAttribute UserUploadDTO userUploadDTO, 
 								@RequestParam("img") MultipartFile img) {
 		userUploadService.uploadUpdate(userUploadDTO, img);
 		return "이미지 수정 완료";
 	}	
+	
+	@RequestMapping(value = "uploadDelete")
+	@ResponseBody
+	public void uploadDelete(@RequestParam String[] check) {  // 체크값이 여러개가 들어올수있어서 배열
+		for(String seq : check) {System.out.println(seq);}
+		userUploadService.uploadDelete(check);
+	}
 }

@@ -19,4 +19,8 @@ public interface UserUploadDAO {
 
 	public void uploadUpdate(UserUploadDTO userUploadDTO);
 
+	public void uploadDelete(List<String> list);
+
+
+
 }

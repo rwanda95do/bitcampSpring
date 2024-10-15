@@ -16,4 +16,6 @@ public interface UserUploadService {
 
 	public void uploadUpdate(UserUploadDTO userUploadDTO, MultipartFile img);
 
+	public void uploadDelete(String[] check);
+
 }

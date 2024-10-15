@@ -17,8 +17,12 @@ th, td {
 </style>
 </head>
 <body>
+<form id="uploadListForm">
 	<table border="1" frame="hsides" rules="rows">
 		<tr>
+			<th>
+				<input type="checkbox" id="all">
+			</th>
 			<th>번호</th>
 			<th>이미지</th>
 			<th>상품명</th>
@@ -26,6 +30,9 @@ th, td {
 		
 		<c:forEach var="userUploadDTO" items="${list }">
 		<tr>
+			<td>
+				<input type="checkbox" class="check" value="${userUploadDTO.seq}" name="check">
+			</td>
 			<td>${userUploadDTO.seq}</td>
 		<!-- Local Storage -->	
 			<%-- <td><img src="http://localhost:8080/spring/storage/${userUploadDTO.imageOriginalFileName}" alt="${userUploadDTO.imageName}"></td>  --%>
@@ -38,5 +45,14 @@ th, td {
 		</tr>
 		</c:forEach>
 	</table>
+</form>
+	<div style="margin-top: 10px;">
+		<input type="button" value="선택삭제" id="uploadDeleteBtn">
+	</div>
+	
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript" src="../js/uploadDelete.js"></script> 
+
 </body>
 </html>

@@ -30,6 +30,7 @@
 	<div style="margin-top: 20px;">
 		<input type="button" value="목록" onclick="location.href='/spring/user/uploadList'">
 		<input type="button" value="수정" onclick="location.href='/spring/user/uploadUpdateForm?seq=${userUploadDTO.seq}'">
+		<input type="button" value="삭제" onclick="location.href='/spring/user/uploadDelete?seq=${userUploadDTO.seq}'">
 	</div>
 </body>
 </html>

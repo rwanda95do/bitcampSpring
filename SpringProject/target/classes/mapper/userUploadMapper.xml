@@ -34,4 +34,10 @@
 		set imageName=#{imageName}, imageContent=#{imageContent}, imageFileName=#{imageFileName}, imageOriginalFileName=#{imageOriginalFileName} 
 		where seq=#{seq} 
 	</update>
+	
+<!-- 이미지 파일 삭제 -->
+	<delete id="uploadDelete" >
+		delete from userUpload where imageFileName in
+		<foreach collection="list" item="str" open="(" close=")" separator=",">#{str}</foreach>
+	</delete>
  </mapper>

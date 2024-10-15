@@ -1,6 +1,7 @@
 package user.service.impl;
 
 import java.io.InputStream;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -62,8 +63,12 @@ public class NCPObjectStorateService implements ObjectStorateService {
 
 	@Override
 	public void deleteFile(String bucketName, String directoryPath, String imageFileName) {
-		s3.deleteObject(bucketName, directoryPath + imageFileName);
-		
+		s3.deleteObject(bucketName, directoryPath + imageFileName);	
 	}
-
+	@Override
+	public void deleteFile(String bucketName, String directoryPath, List<String> list) {
+		for(String imageFileName:list) {
+			s3.deleteObject(bucketName, directoryPath + imageFileName);				
+		}
+	}
 }
