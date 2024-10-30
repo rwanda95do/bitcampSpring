@@ -12,6 +12,8 @@
     <typeInfo handle="=Chapter04_XML/src=/optional=/true=/=/maven.pomderived=/true=/&lt;user.dao{UserDAO.java[UserDAO" modifiers="513" timestamp="1728032703888"/>
     <typeInfo handle="=Chapter04_XML/src=/optional=/true=/=/maven.pomderived=/true=/&lt;user.service{UserService.java[UserService" modifiers="513" timestamp="1728025684634"/>
     <typeInfo handle="=SpringProject/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;user.service{UserService.java[UserService" modifiers="513" timestamp="1728609848524"/>
-    <typeInfo handle="=SpringProject/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;user.service{UserUploadService.java[UserUploadService" modifiers="513" timestamp="1728894156186"/>
-    <typeInfo handle="=SpringProject/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;user.service{ObjectStorateService.java[ObjectStorateService" modifiers="513" timestamp="1728898242474"/>
+    <typeInfo handle="=SpringProject/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;user.service{UserUploadService.java[UserUploadService" modifiers="513" timestamp="1728959313469"/>
+    <typeInfo handle="=SpringProject/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;user.service{ObjectStorateService.java[ObjectStorateService" modifiers="513" timestamp="1728960224459"/>
+    <typeInfo handle="=SpringReactProject/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;member.service{MemberService.java[MemberService" modifiers="513" timestamp="1730190175391"/>
+    <typeInfo handle="=SpringReactProject/C:\/Users\/bitcamp\/.m2\/repository\/org\/mybatis\/mybatis\/3.5.16\/mybatis-3.5.16.jar=/maven.pomderived=/true=/=/org.eclipse.jst.component.dependency=/\/WEB-INF\/lib=/=/maven.pomderived=/true=/=/org.eclipse.jst.component.archivename=/mybatis-3.5.16.jar=/=/maven.groupId=/org.mybatis=/=/maven.artifactId=/mybatis=/=/maven.version=/3.5.16=/=/maven.scope=/compile=/&lt;org.apache.ibatis.ognl(MemberAccess.class[MemberAccess" modifiers="1537" timestamp="1728272539368"/>
 </typeInfoHistroy>
